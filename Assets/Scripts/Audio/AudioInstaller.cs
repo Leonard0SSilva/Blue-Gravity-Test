@@ -5,6 +5,11 @@ using UnityEngine;
 using UnityEngine.Audio;
 using static AudioClipSettings;
 
+// Manages audio settings, music, and sound effects for the game.
+// This class is responsible for configuring and controlling audio settings, including music and sound effects playback.
+// It also handles the management of multiple audio sources for sound effects.
+// The class uses Unity's Audio Mixer for controlling audio volumes and provides functions
+// to play, stop, and control audio playback based on various settings.
 public class AudioInstaller
 {
     public AudioSettings settings;

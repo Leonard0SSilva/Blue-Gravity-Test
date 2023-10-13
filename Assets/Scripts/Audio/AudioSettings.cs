@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
+/// <summary>
+/// Settings data for AudioInstaller or any audio class
+/// </summary>
 [CreateAssetMenu(menuName = "Settings/Audio")]
 public class AudioSettings : ScriptableObject
 {
