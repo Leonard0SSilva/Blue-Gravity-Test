@@ -8,8 +8,11 @@ public class AppInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
+        SignalBusInstaller.Install(Container);
+
         Container.Bind<AudioInstaller>().AsSingle()
             .WithArguments(audioSettings).NonLazy();
+
         GameInstaller.Install(Container);
     }
 }
