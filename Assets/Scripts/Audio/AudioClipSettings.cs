@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static AudioClipSettings;
+using UnityEngine.EventSystems;
 
 [Serializable]
 public class AudioClipSettings
 {
+    public bool music;
     public enum PlayAudioType { oneShot, random, sequence };
     public PlayAudioType playAudioType;
     public int sequenceIndex;
@@ -28,5 +29,20 @@ public class AudioClipSettings
         this.loop = loop;
         this.oneShot = oneShot;
         this.playAudioType = playAudioType;
+    }
+
+    public void Execute(BaseEventData eventBseData)
+    {
+        AudioManager.Instance.Play(this, music);
+    }
+
+    public void Execute()
+    {
+        AudioManager.Instance.Play(this, music);
+    }
+
+    public void StopExecute()
+    {
+        AudioManager.Instance.Stop(this, music);
     }
 }

@@ -2,6 +2,7 @@ using Zenject;
 
 public class DemoSceneInstaller : MonoInstaller
 {
+    public AudioClipSettings musicSettings;
     public int startHealth = 1, startCoins = 500;
     public IntReference health, coins;
 
@@ -9,5 +10,6 @@ public class DemoSceneInstaller : MonoInstaller
     {
         health.Set(startHealth);
         coins.Set(startCoins);
+        musicSettings.Execute();
     }
 }

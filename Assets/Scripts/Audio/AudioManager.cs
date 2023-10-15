@@ -12,6 +12,7 @@ using static AudioClipSettings;
 // to play, stop, and control audio playback based on various settings.
 public class AudioManager
 {
+    public static AudioManager Instance;
     public AudioSettings settings;
 
     [SerializeField]
@@ -33,6 +34,7 @@ public class AudioManager
 
     public AudioManager(AudioSettings settings)
     {
+        Instance = this;
         this.settings = settings;
 
         var go = new GameObject
