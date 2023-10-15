@@ -28,6 +28,7 @@ public class ItemUInstance : MonoBehaviour
     [Serializable]
     public class View
     {
+        public GameObject gameObject;
         public GameObject highlight;
         public Image icon;
         public TextMeshProUGUI slotIndexTMP, priceTMP;

@@ -19,6 +19,6 @@ public class InventoryInstaller : MonoInstaller
         Container.BindMemoryPool<ItemUInstance, ItemUInstance.Pool>()
         .FromNewComponentOnNewPrefab(inventoryPrefab)
         .UnderTransform(inventoryParent)
-        .AsSingle();
+        .AsSingle().NonLazy();
     }
 }
