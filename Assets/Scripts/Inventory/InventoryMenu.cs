@@ -46,13 +46,13 @@ public class InventoryMenu : MonoBehaviour
         }
     }
 
-    public void OnOpenShop(OpenShop onOpen = null)
+    public void OnOpenShop(OpenShopSignal onOpen = null)
     {
         SellOption(true);
         shopIsOpen = true;
     }
 
-    public void OnCloseShop(CloseShop closeShop = null)
+    public void OnCloseShop(CloseShopSignal closeShop = null)
     {
         SellOption(false);
         shopIsOpen = false;

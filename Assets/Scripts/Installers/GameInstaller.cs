@@ -4,7 +4,9 @@ public class GameInstaller : Installer<GameInstaller>
 {
     public override void InstallBindings()
     {
-        Container.DeclareSignal<OpenShop>();
-        Container.DeclareSignal<CloseShop>();
+        Container.DeclareSignal<OpenShopSignal>();
+        Container.DeclareSignal<CloseShopSignal>();
+        Container.DeclareSignal<EquipItemSignal>();
+        Container.DeclareSignal<UnequipItemSignal>();
     }
 }

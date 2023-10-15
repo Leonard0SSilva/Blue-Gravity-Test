@@ -35,12 +35,12 @@ public class ShopkeeperMenu : MonoBehaviour
     private void OnEnable()
     {
         ReinitializeUI();
-        signalBus?.Fire<OpenShop>();
+        signalBus?.Fire<OpenShopSignal>();
     }
 
     private void OnDisable()
     {
-        signalBus?.Fire<CloseShop>();
+        signalBus?.Fire<CloseShopSignal>();
     }
 
     private void OnDestroy()

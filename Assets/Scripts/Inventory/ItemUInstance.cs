@@ -43,6 +43,7 @@ public class ItemUInstance : MonoBehaviour
     {
         this.settings = settings;
         this.view = view;
+        settings.Item.equipped = false;
     }
 
     public void Initialize(bool invalid = false)

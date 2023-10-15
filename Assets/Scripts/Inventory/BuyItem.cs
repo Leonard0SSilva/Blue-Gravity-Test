@@ -25,6 +25,7 @@ public class BuyItem : IInitializable
             int validIndex = playerItems.value.FindIndex(x => x.Empty);
             if (validIndex != -1 && currency.Value >= settings.Item.price)
             {
+                settings.Item.equipped = false;
                 playerItems.Set(new Item(settings.Item), validIndex);
                 currency.Set(currency.Value - settings.Item.price);
                 view.gameObject.SetActive(false);

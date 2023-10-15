@@ -9,10 +9,10 @@ public class InventoryInstaller : MonoInstaller
     public override void InstallBindings()
     {
         Container.Bind<InventoryMenu>().FromComponentOnRoot().AsSingle().NonLazy();
-        Container.BindSignal<OpenShop>()
+        Container.BindSignal<OpenShopSignal>()
            .ToMethod<InventoryMenu>(x => x.OnOpenShop)
            .FromResolve();
-        Container.BindSignal<CloseShop>()
+        Container.BindSignal<CloseShopSignal>()
            .ToMethod<InventoryMenu>(x => x.OnCloseShop)
            .FromResolve();
 

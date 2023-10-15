@@ -1,32 +1,53 @@
-// Update player's equipped item visuals based on changes in the equipped items list
+// Update player's equipped item visuals based on changes in the player items
 using UnityEngine;
+using Zenject;
 
 public class PlayerUpdateEquipment : MonoBehaviour
 {
-    public int index;
-    public ItemListVariable equippedItems;
     public Sprite[] spritSides;
-    public SpriteRenderer[] itemSides;
+    public SpriteRenderer[] hatSides;
+
+    public SignalBus signalBus;
+
+    [Inject]
+    public void Construct(SignalBus signalBus)
+    {
+        this.signalBus = signalBus;
+    }
 
     private void Start()
     {
-        equippedItems.onListValueIndexChange += OnEquipItemChange;
+        signalBus.Subscribe<EquipItemSignal>(OnEquipItem);
+        signalBus.Subscribe<UnequipItemSignal>(OnUnequipItem);
     }
 
     private void OnDestroy()
     {
-        equippedItems.onListValueIndexChange += OnEquipItemChange;
+        signalBus.Unsubscribe<EquipItemSignal>(OnEquipItem);
+        signalBus.Unsubscribe<UnequipItemSignal>(OnUnequipItem);
     }
 
-    private void OnEquipItemChange(Item item, int index)
+    private void OnEquipItem(EquipItemSignal signal)
     {
-        if (this.index == index)
+        if (signal.item.ItemType.GetType() == typeof(ItemEquippableAction))
         {
-            spritSides = item.itemSides;
-            for (int i = 0; i < itemSides.Length; i++)
+            spritSides = signal.item.itemSides;
+            for (int i = 0; i < hatSides.Length; i++)
             {
-                itemSides[i].sprite = spritSides != null && spritSides.Length > i ? spritSides[i] : null;
-                itemSides[i].gameObject.SetActive(itemSides[i].sprite == null);
+                hatSides[i].sprite = spritSides != null && spritSides.Length > i ? spritSides[i] : null;
+                hatSides[i].gameObject.SetActive(hatSides[i].sprite == null);
+            }
+        }
+    }
+
+    private void OnUnequipItem(UnequipItemSignal signal)
+    {
+        if (signal.item.ItemType.GetType() == typeof(ItemEquippableAction))
+        {
+            for (int i = 0; i < hatSides.Length; i++)
+            {
+                hatSides[i].sprite = null;
+                hatSides[i].gameObject.SetActive(false);
             }
         }
     }
