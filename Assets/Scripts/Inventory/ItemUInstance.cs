@@ -91,7 +91,7 @@ public class ItemUInstance : MonoBehaviour
         }
         if (view.sellButton)
         {
-            view.sellButton.gameObject.SetActive(view.enableSell);
+            view.sellButton.gameObject.SetActive(!settings.Item.Empty && view.enableSell);
             view.sellButton.interactable = !invalid;
         }
     }
