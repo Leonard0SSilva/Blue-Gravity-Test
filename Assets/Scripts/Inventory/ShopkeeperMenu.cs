@@ -52,7 +52,7 @@ public class ShopkeeperMenu : MonoBehaviour
     {
         for (int i = 0; i < items.value.Count; i++)
         {
-            itemInstances[i].UpdateSellButton(true, items.value[i].price > currency);
+            itemInstances[i].UpdateSellButton(items.value[i].price > currency);
         }
     }
 
@@ -60,7 +60,7 @@ public class ShopkeeperMenu : MonoBehaviour
     {
         for (int i = 0; i < items.value.Count; i++)
         {
-            itemInstances[i].UpdateSellButton(true, items.value[i].price > playerCurrency.value);
+            itemInstances[i].UpdateSellButton(items.value[i].price > playerCurrency.value);
         }
     }
 }

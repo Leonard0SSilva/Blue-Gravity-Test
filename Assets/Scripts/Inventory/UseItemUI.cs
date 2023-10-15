@@ -56,6 +56,7 @@ public class UseItemUI : MonoBehaviour
                     }
                 }
                 settings.Item.ItemType?.Execute(settings.Item);
+                signalBus.Fire(new UpdateUIItemSignal() { item = settings.Item });
                 if (settings.Item.Empty)
                 {
                     settings.items.value[settings.index] = new Item();

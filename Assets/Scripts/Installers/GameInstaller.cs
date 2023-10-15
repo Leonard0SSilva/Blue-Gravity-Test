@@ -6,6 +6,7 @@ public class GameInstaller : Installer<GameInstaller>
     {
         Container.DeclareSignal<OpenShopSignal>();
         Container.DeclareSignal<CloseShopSignal>();
+        Container.DeclareSignal<UpdateUIItemSignal>();
         Container.DeclareSignal<EquipItemSignal>();
         Container.DeclareSignal<UnequipItemSignal>();
     }

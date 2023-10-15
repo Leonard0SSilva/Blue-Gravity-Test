@@ -36,7 +36,6 @@ public class InventoryMenu : MonoBehaviour
         items.onListValueIndexChange -= OnItemChange;
     }
 
-    //Update UI
     private void OnItemChange(Item item, int index)
     {
         itemInstances[index].Initialize();
@@ -62,7 +61,8 @@ public class InventoryMenu : MonoBehaviour
     {
         for (int i = 0; i < items.value.Count; i++)
         {
-            itemInstances[i].UpdateSellButton(value && !items.value[i].Empty, false);
+            itemInstances[i].view.enableSell = value && !items.value[i].Empty;
+            itemInstances[i].UpdateSellButton(false);
         }
     }
 }

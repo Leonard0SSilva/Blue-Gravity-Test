@@ -28,22 +28,43 @@ public class ItemUInstance : MonoBehaviour
     [Serializable]
     public class View
     {
+        public bool enableSell;
         public GameObject gameObject;
         public GameObject highlight;
         public Image icon;
-        public TextMeshProUGUI slotIndexTMP, priceTMP;
+        public TextMeshProUGUI slotIndexTMP, amountTMP, priceTMP;
         public Button equipButton, sellButton;
     }
 
     public Settings settings;
     public View view;
+    public SignalBus signalBus;
 
     [Inject]
-    public void Construct(Settings settings, View view)
+    public void Construct(Settings settings, View view, SignalBus signalBus)
     {
         this.settings = settings;
         this.view = view;
+        this.signalBus = signalBus;
         settings.Item.equipped = false;
+    }
+
+    public void Start()
+    {
+        signalBus.Subscribe<UpdateUIItemSignal>(UpdateUI);
+    }
+
+    public void OnDestroy()
+    {
+        signalBus.Unsubscribe<UpdateUIItemSignal>(UpdateUI);
+    }
+
+    public void UpdateUI(UpdateUIItemSignal signal)
+    {
+        if (signal.item == settings.Item)
+        {
+            Initialize();
+        }
     }
 
     public void Initialize(bool invalid = false)
@@ -55,12 +76,13 @@ public class ItemUInstance : MonoBehaviour
         {
             view.slotIndexTMP.text = $"{settings.index.Value + 1}";
         }
-        UpdateSellButton(false, invalid);
+        UpdateSellButton(invalid);
         view.icon.sprite = settings.Item.icon;
         view.icon.enabled = !settings.Item.Empty;
+        view.amountTMP.text = settings.Item.amount > 1 ? settings.Item.amount.ToString() : "";
     }
 
-    public void UpdateSellButton(bool value, bool invalid)
+    public void UpdateSellButton(bool invalid)
     {
         if (view.priceTMP)
         {
@@ -69,7 +91,7 @@ public class ItemUInstance : MonoBehaviour
         }
         if (view.sellButton)
         {
-            view.sellButton.gameObject.SetActive(value);
+            view.sellButton.gameObject.SetActive(view.enableSell);
             view.sellButton.interactable = !invalid;
         }
     }
