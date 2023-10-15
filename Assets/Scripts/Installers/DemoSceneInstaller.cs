@@ -1,6 +1,6 @@
 using Zenject;
 
-//Attached on the DemoScene Context
+//Attached on the SceneContext
 public class DemoSceneInstaller : MonoInstaller
 {
     public AudioClipSettings musicSettings;
