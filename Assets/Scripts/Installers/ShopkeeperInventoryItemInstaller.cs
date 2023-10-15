@@ -1,5 +1,6 @@
 using Zenject;
 
+//Attached to shopkeeper inventory item instance as subcontainer resolve
 public class ShopkeeperInventoryItemInstaller : MonoInstaller
 {
     public ItemListVariable playerItems;

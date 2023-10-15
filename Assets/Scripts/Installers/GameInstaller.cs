@@ -1,5 +1,6 @@
 using Zenject;
 
+//Replace or update game settings by extendind this class
 public class GameInstaller : Installer<GameInstaller>
 {
     public override void InstallBindings()

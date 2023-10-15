@@ -1,6 +1,7 @@
 using UnityEngine;
 using Zenject;
 
+//Attached to shopkeeper ui GameObjectContext
 public class ShopkeeperInstaller : MonoInstaller
 {
     public ShopkeeperMenu shopkeeperMenu;

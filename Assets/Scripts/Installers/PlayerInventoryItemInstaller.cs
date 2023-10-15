@@ -1,5 +1,6 @@
 using Zenject;
 
+//Attached to player inventory item instance as subcontainer resolve
 public class PlayerInventoryItemInstaller : MonoInstaller
 {
     public IntReference currency;

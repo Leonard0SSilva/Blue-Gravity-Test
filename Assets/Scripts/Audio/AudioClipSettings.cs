@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 [Serializable]
 public class AudioClipSettings
@@ -29,11 +28,6 @@ public class AudioClipSettings
         this.loop = loop;
         this.oneShot = oneShot;
         this.playAudioType = playAudioType;
-    }
-
-    public void Execute(BaseEventData eventBseData)
-    {
-        AudioManager.Instance.Play(this, music);
     }
 
     public void Execute()

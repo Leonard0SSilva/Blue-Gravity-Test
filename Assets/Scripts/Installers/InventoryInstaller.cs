@@ -1,6 +1,7 @@
 using UnityEngine;
 using Zenject;
 
+//Attached to player inventory ui GameObjectContext
 public class InventoryInstaller : MonoInstaller
 {
     public GameObject inventoryPrefab;

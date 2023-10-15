@@ -1,6 +1,7 @@
 using UnityEngine;
 using Zenject;
 
+//Attached on the Project Context
 public class AppInstaller : MonoInstaller
 {
     [SerializeField]

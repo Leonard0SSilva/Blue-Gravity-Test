@@ -1,5 +1,6 @@
 using Zenject;
 
+//Attached to player GameObjectContext
 public class PlayerInstaller : MonoInstaller
 {
     public Vector2Reference direction;
