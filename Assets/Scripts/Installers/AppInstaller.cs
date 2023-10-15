@@ -10,7 +10,7 @@ public class AppInstaller : MonoInstaller
     {
         SignalBusInstaller.Install(Container);
 
-        Container.Bind<AudioInstaller>().AsSingle()
+        Container.Bind<AudioManager>().AsSingle()
             .WithArguments(audioSettings).NonLazy();
 
         GameInstaller.Install(Container);

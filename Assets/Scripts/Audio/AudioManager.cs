@@ -10,7 +10,7 @@ using static AudioClipSettings;
 // It also handles the management of multiple audio sources for sound effects.
 // The class uses Unity's Audio Mixer for controlling audio volumes and provides functions
 // to play, stop, and control audio playback based on various settings.
-public class AudioInstaller
+public class AudioManager
 {
     public AudioSettings settings;
 
@@ -31,7 +31,7 @@ public class AudioInstaller
         get { return musicSource.clip; }
     }
 
-    public AudioInstaller(AudioSettings settings)
+    public AudioManager(AudioSettings settings)
     {
         this.settings = settings;
 
